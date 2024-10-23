@@ -1,0 +1,30 @@
+#sketchContainer {
+    width: 960px;
+    height: 960px;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    border-width: 4px;
+    border-color: black;
+    border-style: solid;
+}
+
+.yDiv {
+    display: flex;
+    flex-grow: 1;
+    /* border-width: 2px;
+    border-color: black;
+    border-style: solid; */
+}
+
+.xDiv {
+    flex-grow: 1;
+}
+
+.inactiveNode {
+    background-color: transparent;
+}
+
+.activeNode {
+    background-color: blueviolet;
+}
