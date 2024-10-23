@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sketchpad</title>
-    <script src="./script.js" defer></script>
-    <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-    <div id="buttons">
-        <button id="setCount">set grid count</button>
-        <button id="reset">reset grid</button>
-        <span>Current grid size: <span class="gridCountNumber">0</span> x <span class="gridCountNumber">0</span> — click and drag on grid to draw</span>
-    </div>
-    <div id="modeButtons">
-        <button id="colorPicker">select color</button>
-        <button id="randomColor">randomize color</button>
-        <button id="rainbow">rainbow mode</button>
-        <button id="shader">shader mode</button>
-    </div>
-    <div id="sketchContainer">
-    
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sketchpad</title>
+        <script src="./script.js" defer></script>
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+        <div id="buttons">
+            <button id="setCount">set grid count</button>
+            <button id="reset">reset grid</button>
+            <span
+                >Current grid size: <span class="gridCountNumber">0</span> x <span class="gridCountNumber">0</span> —
+                click and drag on grid to draw</span
+            >
+        </div>
+        <div id="modeButtons">
+            <label for="colorPicker">Choose a color: </label>
+            <input type="color" id="colorPicker" name="colorPicker" value="rgb(0, 0, 0)" />
+            <button id="randomColor">randomize color</button>
+            <button id="rainbow">rainbow mode</button>
+            <button id="shader">shader mode</button>
+        </div>
+        <div id="sketchContainer"></div>
+    </body>
 </html>

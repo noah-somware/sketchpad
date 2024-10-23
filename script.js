@@ -8,12 +8,23 @@ let blue = 0;
 
 let color = `rgb(${red}, ${green}, ${blue})`;
 
+const colorPicker = document.querySelector('#colorPicker');
+colorPicker.addEventListener('input', () => {
+    color = colorPicker.value;
+})
+
+function rgbToHex(r, g, b) {
+    return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
 function randomizeColor() {
     red = Math.floor(Math.random() * 256);
     green = Math.floor(Math.random() * 256);
     blue = Math.floor(Math.random() * 256);
 
     color = `rgb(${red}, ${green}, ${blue})`;
+    const hexColor = rgbToHex(red, green, blue);
+    colorPicker.value = hexColor;
     console.log(`new color elements: rgb(${red}, ${green}, ${blue})`);
     console.log('new color variable: ', color);
 }
