@@ -43,6 +43,7 @@ function activateNode(e) {
 }
 
 sketchContainer.addEventListener('mousedown', (e) => {
+    e.preventDefault();
     isMouseDown = true;
     activateNode(e);
 });
