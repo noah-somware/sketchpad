@@ -1,5 +1,7 @@
 let gridCount = 16;
 
+const gridCountNumber = document.querySelectorAll('.gridCountNumber');
+
 const getNumber = () => {
     do {
         gridCount = Number(prompt('How many grid tiles would you like? 2-100 please.'));
@@ -13,7 +15,7 @@ document.addEventListener('DOMContentLoaded', populateGrid);
 const sketchContainer = document.querySelector('#sketchContainer');
 
 function populateGrid() {
-    console.log("populating grid.");
+    console.log('populating grid.');
     for (let y = 0; y < gridCount; y++) {
         let yDiv = document.createElement('div');
         yDiv.classList.add('yDiv');
@@ -24,13 +26,18 @@ function populateGrid() {
             yDiv.appendChild(xDiv);
         }
     }
+
+    gridCountNumber.forEach((element) => {
+        console.log("Setting gridCountNumbers");
+        element.textContent = gridCount;
+    });
 }
 
 let isMouseDown = false;
 
 function activateNode(e) {
     if (isMouseDown && e.target.classList.contains('xDiv')) {
-        console.log("activating node.");
+        console.log('activating node.');
         e.target.classList.add('activeNode');
     }
 }
@@ -38,7 +45,7 @@ function activateNode(e) {
 sketchContainer.addEventListener('mousedown', (e) => {
     isMouseDown = true;
     activateNode(e);
-})
+});
 
 sketchContainer.addEventListener('mousemove', activateNode);
 
