@@ -28,3 +28,7 @@
 .activeNode {
     background-color: blueviolet;
 }
+
+.test {
+    background-color: rgb(100, 200, 200);
+}
