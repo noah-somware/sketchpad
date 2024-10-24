@@ -11,7 +11,7 @@ let color = `rgb(${red}, ${green}, ${blue})`;
 const colorPicker = document.querySelector('#colorPicker');
 colorPicker.addEventListener('input', () => {
     color = colorPicker.value;
-})
+});
 
 function rgbToHex(r, g, b) {
     return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
@@ -69,9 +69,10 @@ function populateGrid() {
 let isMouseDown = false;
 
 function activateNode(e) {
-    if (isMouseDown && e.target.classList.contains('xDiv')) {
+    if (isMouseDown && e.target.classList.contains('xDiv') && !e.target.hasAttribute('data-hovered')) {
         console.log('activating node.');
         // e.target.classList.add('activeNode');
+        const allX = document.querySelectorAll('.xDiv');
         switch (mode) {
             case 'shader':
                 e.target.style.backgroundColor = 'black';
@@ -80,10 +81,18 @@ function activateNode(e) {
                 console.log('currentOpacity: ', currentOpacity);
                 currentOpacity > 0.9 ? (e.target.style.opacity = 1) : (e.target.style.opacity = currentOpacity + 0.1);
                 console.log('new opacity: ', e.target.style.opacity);
+                allX.forEach((element) => {
+                    element.removeAttribute('data-hovered');
+                });
+                e.target.setAttribute('data-hovered', true);
                 break;
             case 'rainbow':
                 randomizeColor();
                 e.target.style.backgroundColor = color;
+                allX.forEach((element) => {
+                    element.removeAttribute('data-hovered');
+                });
+                e.target.setAttribute('data-hovered', true);
                 break;
             default:
                 e.target.style.backgroundColor = color;
@@ -103,6 +112,10 @@ sketchContainer.addEventListener('mousemove', activateNode);
 document.addEventListener('mouseup', () => {
     isMouseDown = false;
     console.log('isMouseDown: ', isMouseDown);
+    const allX = document.querySelectorAll('.xDiv');
+    allX.forEach((element) => {
+        element.removeAttribute('data-hovered');
+    });
 });
 
 function resetNodes() {
